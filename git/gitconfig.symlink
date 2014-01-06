@@ -1,13 +1,13 @@
 [user]
-        name = Adam Borocz
-        email = boroczadam@gmail.com
+        name = Jos Shepherd
+        email = jos.shepherd@hipsnip.com
 [color]
         branch = auto
         diff = auto
         interactive = auto
         status = auto
 [core]
-	excludesfile = /Users/adamb/.gitignore
+	excludesfile = /Users/jos/.gitignore
 [dude]
         interval = 30
 [alias]
