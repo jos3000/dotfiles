@@ -57,3 +57,7 @@ do
 done
 
 unset config_files
+
+/Volumes/CRYPT/environment.sh
+
+export PATH=/opt/boxen/nodenv/versions/v0.10/bin/:$PATH
