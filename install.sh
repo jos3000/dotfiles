@@ -38,17 +38,21 @@ link_files () {
   success "linked $1 to $2"
 }
 
+link_backup () {
+  if [ -f $2 ] || [ -d $2 ]
+  then
+    backup_file $2
+  fi
+
+  link_files $1 $2
+}
+
 install_dotfiles () {
   for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
   do
     dest="$HOME/.`basename \"${source%.*}\"`"
 
-    if [ -f $dest ] || [ -d $dest ]
-    then
-      backup_file $dest
-    fi
-
-    link_files $source $dest
+    link_backup $source $dest
   done
 }
 
@@ -76,9 +80,15 @@ install_font () {
   success "Copied Menlo Powerline font to $font_dir"
 }
 
+install_crypt() {
+  link_backup "/Volumes/CRYPT/ssh" "$HOME/.ssh"
+  link_backup "/Volumes/CRYPT/chef" "$HOME/.chef"
+  link_backup "/Volumes/CRYPT/s3cfg" "$HOME/.s3cfg"
+}
 
 ################################################################################
 
 install_dotfiles
 install_sublime_settings
 install_font
+install_crypt
